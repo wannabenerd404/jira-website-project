@@ -1,15 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/gruvbox-dark.css" rel="stylesheet">
-  </head>
-  <body>
-      {{HEADER}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Design</title>
+    <style> /*integrates css without a seperate file*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /*easier sizing*/
+        } /*resets default spacing*/
 
-      {{FOOTER}}
-  </body>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d3436 0%, #1e272e 100%); /*diagonal grey gradient, dark grey to darker*/
+            color: #dfe6e9; 
+            line-height: 1.6; /*spaces out lines for readability*/
+        } /*styles the whole page, let me know if the color scheme is nice*/
+
+        header {
+            background: rgba(45, 52, 54, 0.8); /*semi transparent dark background*/
+            backdrop-filter: blur(10px); /*blurs content behind header, creates a frosted glass effect, we can change this but i think its nice*/
+            padding: 1.5rem 2rem;
+            position: sticky; /*header stays atop while scrolling*/
+            top: 0;
+            z-index: 100; /*makes sure the header stays above other elements*/
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        } /*navigation bar stlying*/
+
+        nav {
+            display: flex; /*makes items sit side by side*/
+            justify-content: space-between; /*pushes logos left and links to the right*/
+            align-items: center; /*centers content with max width*/
+            max-width: 1200px;
+            margin: 0 auto;
+        } /*organizes the logo and links*/
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00b894, #55efc4);
+            -webkit-background-clip: text; /*this clips gradient to text shape*/
+            -webkit-text-fill-color: transparent; /*makes text transparent to show gradient*/
+            background-clip: text;
+        } /*brand name styling*/
+
+        .nav-links {
+            display: flex;
+            gap: 2rem; /*horizontal layout with spacing*/
+            list-style: none; /*removes bullet points*/
+        } /*nav menu*/
+
+        .nav-links a {
+            color: #dfe6e9;
+            text-decoration: none; /*removes underline*/
+            transition: color 0.3s; /*smooth color change animation*/
+        } /*link styling*/
+
+        .nav-links a:hover {
+            color: #00b894;
+        } /*when hovering over links they turn green, we can change the colors if need be*/
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;/*large top and bottom space and smaller left and right space*/
+            text-align: center;
+        } /*main banner section*/
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00b894, #55efc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #b2bec3;
+            margin-bottom: 2rem;
+        } /*tagline under */
+
+        .cta-button {
+            display: inline-block; /*allows padding*/
+            background: linear-gradient(135deg, #00b894, #55efc4);
+            color: #2d3436;
+            padding: 1rem 2.5rem;
+            border-radius: 50px; /*shapes it like a pill*/
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s; /*smooth hover animation*/
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3); /*glowing green shadow*/
+        } /*get started button*/
+
+        .cta-button:hover {
+            transform: translateY(-3px); /*lifts button by 3 pixels, can change to have a stronger effect*/
+            box-shadow: 0 6px 25px rgba(0, 184, 148, 0.5);
+        }
+
+        .features {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid; /*creates a grid layout*/
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /*makes the cards automatically arrange in rows*/
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(45, 52, 54, 0.6);
+            backdrop-filter: blur(10px); /*frosted glass effect*/
+            padding: 2rem;
+            border-radius: 15px; /*rounded corners*/
+            border: 1px solid rgba(0, 184, 148, 0.2);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 184, 148, 0.5);
+        }
+
+        .card h3 {
+            color: #00b894;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        } /*lifts by 5 pixels and borer becomes more visible*/
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            background: rgba(30, 39, 46, 0.8);
+            color: #b2bec3;
+        } /*copyright section*/
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Horse Tinder</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Efficient Breeding Selections</h1>
+        <p class="subtitle">Find a suitable stud for your mare.</p>
+        <a href="#" class="cta-button">Find Horses Near You</a>
+    </section>
+
+    <section class="features">
+        <div class="card">
+            <h3>Strong Breeds</h3>
+            <p>Built for power, matched with muscle — find your mane squeeze among the strongest steeds!</p>
+        </div>
+        <div class="card">
+            <h3>Ranch Location</h3>
+            <p>Gallop to greatness — find top stallion ranches near you in a flash!</p>
+        </div>
+        <div class="card">
+            <h3>Artificial Insemination</h3>
+            <p>Champion bloodlines, no horsing around — premium stallion genetics delivered straight to your stable.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Horse Tinder. All rights reserved.</p>
+    </footer>
+</body>
 </html>
